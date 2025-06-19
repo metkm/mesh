@@ -38,7 +38,7 @@ onMounted(() => {
 <template>
   <TresMesh>
     <TresPlaneGeometry
-      :args="[1.5, 1.5, 300, 300]"
+      :args="[1, 2, 300 * 5, 300 * 2]"
     />
     <!-- <TresPlaneGeometry :args="[width, height]" /> -->
 
@@ -46,7 +46,6 @@ onMounted(() => {
       :vertex-shader="commonVertex"
       :fragment-shader="noiseFrag"
       :uniforms="uniforms"
-      :side="DoubleSide"
     />
   </TresMesh>
 </template>

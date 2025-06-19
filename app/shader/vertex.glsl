@@ -93,12 +93,19 @@ void main() {
   for (int i = 2; i >= 0; i--) {
     float noiseFlow = float(i) * 0.1;
     float noiseSpeed = float(i) * 0.1;
+
+    float noiseFloor = 0.0;
+    float noiseCeil = 0.6 + float(i) * 0.07;
     
-    float noise = snoise(
-      vec3(
-        noiseCoord.x + time * noiseFlow,
-        noiseCoord.y,
-        time * noiseSpeed
+    float noise = smoothstep(
+      noiseFloor,
+      noiseCeil,
+      snoise(
+        vec3(
+          noiseCoord.x + time * noiseFlow,
+          noiseCoord.y,
+          time * noiseSpeed + noiseSpeed
+        )
       )
     );
 

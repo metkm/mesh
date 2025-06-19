@@ -11,8 +11,11 @@ extend({ OrbitControls })
       <!-- <TresOrthographicCamera
         :position="[0, 0, 1]"
       /> -->
-      <TresPerspectiveCamera :position="[0, 0, 2]" />
-      <TheOrbitControls />
+      <TresPerspectiveCamera
+        :position="[0, -0.5, 1]"
+        :look-at="[0, 0, 0]"
+      />
+      <!-- <TheOrbitControls /> -->
 
       <TheNoise />
     </TresCanvas>
