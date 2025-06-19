@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Color, DoubleSide, Vector2 } from 'three'
+import { Color, Vector2 } from 'three'
 import commonVertex from '~/shader/vertex.glsl?raw'
 import noiseFrag from '~/shader/noise.glsl?raw'
 
@@ -18,7 +18,7 @@ const uniforms = {
 }
 
 onLoop(({ elapsed }) => {
-  uniforms.time.value = elapsed
+  uniforms.time.value = elapsed / 3
 })
 
 onMounted(() => {
@@ -38,7 +38,7 @@ onMounted(() => {
 <template>
   <TresMesh>
     <TresPlaneGeometry
-      :args="[1, 2, 300 * 5, 300 * 2]"
+      :args="[3.5, 2, 300 * 3.5, 300 * 2]"
     />
     <!-- <TresPlaneGeometry :args="[width, height]" /> -->
 

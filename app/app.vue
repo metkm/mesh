@@ -12,10 +12,12 @@ extend({ OrbitControls })
         :position="[0, 0, 1]"
       /> -->
       <TresPerspectiveCamera
-        :position="[0, -0.5, 1]"
-        :look-at="[0, 0, 0]"
+        :position="[0, -1, 0.8]"
+        :look-at="[0, 0, -0.8]"
       />
+
       <!-- <TheOrbitControls /> -->
+      <TresAxesHelper />
 
       <TheNoise />
     </TresCanvas>
