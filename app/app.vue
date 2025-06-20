@@ -30,7 +30,7 @@ extend({ OrbitControls })
       class="canvas"
     >
       <TheCamera />
-      <TresAxesHelper />
+      <!-- <TresAxesHelper /> -->
 
       <TheNoise />
     </TresCanvas>
