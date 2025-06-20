@@ -1,12 +1,12 @@
 uniform float time;
-uniform vec3 colors[3];
+uniform vec3 colors[6];
 
 varying vec2 vUv;
 varying vec3 vColor;
 
 //	Simplex 3D Noise 
 //	by Ian McEwan, Stefan Gustavson (https://github.com/stegu/webgl-noise)
-//
+//  https://www.youtube.com/watch?v=LW9d2cqIHb4
 vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
 vec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}
 
@@ -77,7 +77,6 @@ void main() {
   vec2 noiseCoord = uv * vec2(3.0, 4.0);
   
   float noise = snoise(vec3(noiseCoord.x + time * 0.1, noiseCoord.y + time * 0.2, time * 0.1));
-  // noise = max(0.0, noise);
 
   float incline = uv.x * 0.5;
   float offset = incline * mix(-0.25, 0.25, uv.y);
@@ -89,9 +88,9 @@ void main() {
   );
 
   // color stuff
-  vColor = colors[2];
+  vColor = colors[5];
 
-  for (int i = 2; i >= 0; i--) {
+  for (int i = 5; i >= 0; i--) {
     float noiseFlow = 0.5 + float(i) * 0.1;
     float noiseSpeed = 0.3 + float(i) * 0.1;
     vec2 noiseFreq = vec2(0.4, 0.5);

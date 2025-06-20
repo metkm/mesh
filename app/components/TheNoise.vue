@@ -6,7 +6,7 @@ import noiseFrag from '~/shader/noise.glsl?raw'
 const width = ref(window.innerWidth)
 const height = ref(window.innerHeight)
 
-const palette = ['#f2766b', '#586166', '#081b26']
+const palette = ['#f2766b', '#586166', '#081b26', '#f2766b', '#586166', '#081b26']
 const colors = palette.map(color => new Color(color))
 
 const { onLoop } = useRenderLoop()
@@ -18,7 +18,7 @@ const uniforms = {
 }
 
 onLoop(({ elapsed }) => {
-  uniforms.time.value = elapsed / 3
+  uniforms.time.value = elapsed / 5
 })
 
 onMounted(() => {
