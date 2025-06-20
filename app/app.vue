@@ -7,23 +7,52 @@ extend({ OrbitControls })
 </script>
 
 <template>
-  <div>
+  <main :style="{ width: '100vw', height: '100vh' }">
+    <div class="grain-filter" />
+
+    <svg class="absolute inset-0">
+      <filter id="noiseFilter">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.7"
+        />
+        <feComposite
+          operator="in"
+          in2="SourceGraphic"
+          result="monoNoise"
+        />
+      </filter>
+    </svg>
+
     <TresCanvas
       window-size
       :output-color-space="SRGBColorSpace"
+      class="canvas"
     >
-      <!-- <TresOrthographicCamera
-        :position="[0, 0, 1]"
-      /> -->
-      <TresPerspectiveCamera
-        :position="[0, -1, 0.8]"
-        :look-at="[0, 0, -0.8]"
-      />
-
-      <!-- <TheOrbitControls /> -->
+      <TheCamera />
       <TresAxesHelper />
 
       <TheNoise />
     </TresCanvas>
-  </div>
+  </main>
 </template>
+
+<style>
+body, html {
+  margin: 0;
+  background: black;
+}
+
+.grain-filter {
+  filter: url(#noiseFilter);
+  background: black;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  opacity: 0.25;
+}
+
+.canvas {
+  opacity: 0.75;
+}
+</style>
